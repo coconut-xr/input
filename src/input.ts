@@ -1,7 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { GlyphProperties, getPropertyChanges } from "@coconut-xr/glyph";
 import {
   buildComponent,
   buildRoot,
+  containerDefaults,
   ContainerProperties,
   flexAPI,
   InvertOptional,
@@ -14,11 +16,8 @@ import {
   useFont,
 } from "@coconut-xr/koestlich";
 import { useEffect, useMemo } from "react";
-import { Color, PlaneGeometry } from "three";
+import { Color } from "three";
 import { TextHandler } from "./text-handler.js";
-
-const geometry = new PlaneGeometry();
-geometry.translate(0.5, -0.5, 0);
 
 export type InputState = TextState;
 
@@ -60,6 +59,7 @@ export function useInput(
     horizontalAlign,
     verticalAlign,
     value,
+    material,
     ...props
   }: InputProperties,
 ): undefined {
@@ -89,10 +89,11 @@ export function useInput(
     node.target.opacity.set(opacity ?? inputDefaults["opacity"]);
     node.onChange = props.onChange;
 
+    node.setBackgroundMaterialClass(material ?? containerDefaults["material"]);
+
     const { hasStructuralChanges } = getPropertyChanges(node.glyphProperties, glyphProperties);
 
     node.updateGlyphProperties(node.text ?? "", glyphProperties, hasStructuralChanges);
-
     node.setProperties(props);
 
     if (value != null) {

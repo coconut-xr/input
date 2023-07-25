@@ -7,19 +7,18 @@
   },
   "dependencies": {
     "@coconut-xr/input": "file:../..",
-    "@coconut-xr/koestlich": "0.0.2",
-    "@react-three/drei": "^9.50.3",
+    "@react-three/drei": "^9.79.4",
     "react-dom": "^18.2.0",
-    "three": "^0.148.0"
+    "three": "^0.154.0"
   },
   "devDependencies": {
-    "@types/react": "^18.0.26",
-    "@types/react-dom": "^18.0.9",
-    "@types/three": "^0.147.1",
-    "@vitejs/plugin-react": "^3.0.0",
-    "prettier": "^2.8.1",
-    "typescript": "^4.9.3",
-    "vite": "^4.0.0",
-    "vite-tsconfig-paths": "^4.0.3"
+    "@types/react": "^18.2.16",
+    "@types/react-dom": "^18.2.7",
+    "@types/three": "^0.154.0",
+    "@vitejs/plugin-react": "^4.0.3",
+    "prettier": "^3.0.0",
+    "typescript": "^5.1.6",
+    "vite": "^4.4.7",
+    "vite-tsconfig-paths": "^4.2.0"
   }
 }

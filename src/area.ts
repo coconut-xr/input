@@ -2,9 +2,8 @@ import { GlyphProperties, getPropertyChanges } from "@coconut-xr/glyph";
 import {
   buildComponent,
   buildRoot,
-  ContainerProperties,
+  containerDefaults,
   flexAPI,
-  InvertOptional,
   resolveGlyphWrapper,
   textDefaults,
   TextProperties,
@@ -46,6 +45,7 @@ export function useTextArea(
     horizontalAlign,
     verticalAlign,
     value,
+    material,
     ...props
   }: TextAreaProperties,
 ): undefined {
@@ -75,10 +75,11 @@ export function useTextArea(
     node.target.opacity.set(opacity ?? textDefaults["opacity"]);
     node.onChange = props.onChange;
 
+    node.setBackgroundMaterialClass(material ?? containerDefaults["material"]);
+
     const { hasStructuralChanges } = getPropertyChanges(node.glyphProperties, glyphProperties);
 
     node.updateGlyphProperties(node.text ?? "", glyphProperties, hasStructuralChanges);
-
     node.setProperties(props);
 
     if (value != null) {

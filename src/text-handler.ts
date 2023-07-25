@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { InstancedGlypthMesh, measureGlyph } from "@coconut-xr/glyph";
 import { TextNode, TextState } from "@coconut-xr/koestlich";
 import { ThreeEvent } from "@react-three/fiber/dist/declarations/src/core/events.js";
@@ -12,7 +14,7 @@ export type TextAreaState = TextState;
 function getCursorPosition(e: ThreeEvent<PointerEvent>): number {
   const intersection = e.intersections.find((i) => i.object instanceof InstancedGlypthMesh);
   const charIdx = intersection?.instanceId ?? 0;
-  const endOffset = (intersection?.uv2?.x ?? 0) < 0.5 ? 0 : 1;
+  const endOffset = ((intersection as any)?.uv2?.x ?? 0) < 0.5 ? 0 : 1;
   return charIdx + endOffset;
 }
 
